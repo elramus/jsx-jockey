@@ -12,6 +12,8 @@ export function activate(context: vscode.ExtensionContext) {
 				return
 			}
 
+			await vscode.commands.executeCommand("editor.action.formatDocument")
+
 			const document = editor.document
 			const position = editor.selection.active
 
