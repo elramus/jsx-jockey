@@ -116,3 +116,7 @@ export const getNodeFromProps = (
 		return checkProperties(node.openingElement.attributes.properties)
 	}
 }
+
+export const nodesAreEqual = (node1: ts.Node, node2: ts.Node): boolean => {
+	return node1.pos === node2.pos && node1.end === node2.end
+}

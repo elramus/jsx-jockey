@@ -12,34 +12,35 @@ export function activate(context: vscode.ExtensionContext) {
 				return
 			}
 
+			// Do an extra formatting up front to help maintain correct cursor
+			// positions after inserting new nodes.
 			await vscode.commands.executeCommand("editor.action.formatDocument")
 
 			const document = editor.document
-			const position = editor.selection.active
 
-			const [edits, startPositions] = wrapWithTag(document, position)
-
-			if (edits.length) {
-				const edit = new vscode.WorkspaceEdit()
-				edit.set(document.uri, edits)
-				await vscode.workspace.applyEdit(edit)
-
-				const openingTagPos = document
-					.positionAt(startPositions[0])
-					.translate(0, 1)
-				const closingTagPos = document
-					.positionAt(startPositions[1])
-					.translate(0, 4)
-
-				editor.selections = [
-					new vscode.Selection(openingTagPos, openingTagPos),
-					new vscode.Selection(closingTagPos, closingTagPos),
-				]
-
-				await vscode.commands.executeCommand(
-					"editor.action.formatDocument"
-				)
+			const results = wrapWithTag(document, editor.selection)
+			if (!results) {
+				return
 			}
+
+			const [edits, cursorPositions] = results
+			const edit = new vscode.WorkspaceEdit()
+			edit.set(document.uri, edits)
+			await vscode.workspace.applyEdit(edit)
+
+			const openingTagPos = document
+				.positionAt(cursorPositions[0])
+				.translate(0, 1)
+			const closingTagPos = document
+				.positionAt(cursorPositions[1])
+				.translate(0, 4)
+
+			editor.selections = [
+				new vscode.Selection(openingTagPos, openingTagPos),
+				new vscode.Selection(closingTagPos, closingTagPos),
+			]
+
+			await vscode.commands.executeCommand("editor.action.formatDocument")
 		}
 	)
 
@@ -55,16 +56,15 @@ export function activate(context: vscode.ExtensionContext) {
 			const position = editor.selection.active
 
 			const edits = deleteTag(position)
-
-			if (edits) {
-				const edit = new vscode.WorkspaceEdit()
-				edit.set(document.uri, edits)
-				await vscode.workspace.applyEdit(edit)
-
-				await vscode.commands.executeCommand(
-					"editor.action.formatDocument"
-				)
+			if (!edits) {
+				return
 			}
+
+			const edit = new vscode.WorkspaceEdit()
+			edit.set(document.uri, edits)
+			await vscode.workspace.applyEdit(edit)
+
+			await vscode.commands.executeCommand("editor.action.formatDocument")
 		}
 	)
 
