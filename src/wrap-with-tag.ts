@@ -45,9 +45,11 @@ export const wrapWithTag = (
 		const rangeStartNode = findNearestJsxNode(sourceFile, selection.start)
 		const rangeEndNode = findNearestJsxNode(sourceFile, selection.end)
 
+		if (!rangeStartNode || !rangeEndNode) {
+			return
+		}
+
 		if (
-			rangeStartNode &&
-			rangeEndNode &&
 			nodesAreEqual(rangeStartNode, rangeEndNode) &&
 			(ts.isJsxElement(rangeStartNode) ||
 				ts.isJsxFragment(rangeStartNode))
@@ -66,6 +68,10 @@ export const wrapWithTag = (
 					document.offsetAt(selection.end)
 				)
 			}
+		} else {
+			// Range is selected, but it's not just text inside an element,
+			// so we'll wrap the nodes of the whole range.
+			return getResults(rangeStartNode.pos, rangeEndNode.end)
 		}
 	} else {
 		// If it's not a range, just find the nearest node and wrap it.
