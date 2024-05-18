@@ -4,7 +4,7 @@ import { deleteTag } from "./delete-tag"
 import { wrapWithTag } from "./wrap-with-tag"
 
 export function activate(context: vscode.ExtensionContext) {
-	let disposableWrapWithTag = vscode.commands.registerCommand(
+	const disposableWrapWithTag = vscode.commands.registerCommand(
 		"jsx-jockey.wrapWithTag",
 		async () => {
 			const editor = vscode.window.activeTextEditor
@@ -41,7 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	)
 
-	let disposableDeleteTag = vscode.commands.registerCommand(
+	const disposableDeleteTag = vscode.commands.registerCommand(
 		"jsx-jockey.deleteTag",
 		async () => {
 			const editor = vscode.window.activeTextEditor
