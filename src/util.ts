@@ -54,8 +54,7 @@ export const getClosingElementOrFragment = (
 
 export const findNearestJsxNode = (
 	node: ts.Node,
-	position: vscode.Position,
-	debug = false
+	position: vscode.Position
 ): ts.JsxSelfClosingElement | ts.JsxElement | ts.JsxFragment | undefined => {
 	if (ts.isJsxSelfClosingElement(node)) {
 		if (isPositionWithinNode(node, position)) {
@@ -100,25 +99,12 @@ export const getNodeFromProps = (
 				prop.initializer &&
 				ts.isJsxExpression(prop.initializer)
 			) {
-				console.log("hello")
 				const { expression } = prop.initializer
 				if (expression) {
-					const result = findNearestJsxNode(
-						expression,
-						position
-						// true
-					)
-					console.log("result", result)
+					const result = findNearestJsxNode(expression, position)
 					if (result) {
 						return result
 					}
-					// if (ts.isJsxSelfClosingElement(expression)) {
-					// 	console.log("found self closing")
-					// 	return findNearestJsxNode(expression, position)
-					// } else if (ts.isJsxElement(expression)) {
-					// 	console.log("found self closing")
-					// 	return findNearestJsxNode(expression.openingElement, position)
-					// }
 				}
 			}
 		}
