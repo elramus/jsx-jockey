@@ -17,6 +17,7 @@
 		"project": ["./tsconfig.json"],
 		"sourceType": "module"
 	},
+	"ignorePatterns": ["webpack.config.js"],
 	"plugins": ["@typescript-eslint"],
 	"rules": {
 		"@typescript-eslint/await-thenable": "error",
