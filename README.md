@@ -25,9 +25,3 @@ It creates new pairs of tags right where you need them, and deletes them in pair
 -   Remove an element but preserve its contents.
 
 ![feature X](src/images/remove-tag.gif)
-
-## Release Notes
-
-### 1.0.0
-
-Initial release.
