@@ -1,12 +1,13 @@
 {
 	"name": "jsx-jockey",
-	"displayName": "jsx-jockey",
+	"displayName": "JSX Jockey",
 	"description": "",
 	"version": "0.0.1",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/elramus/jsx-jockey.git"
 	},
+	"publisher": "lukeramus",
 	"engines": {
 		"vscode": "^1.89.0"
 	},
