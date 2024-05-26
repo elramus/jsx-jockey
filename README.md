@@ -1,4 +1,4 @@
-# JSX Jockey
+# JSX Jockey 🏇
 
 JSX Jockey is a VSCode extension that speeds up your React development by letting you add and remove matching JSX tags in a single operation.
 
