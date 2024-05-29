@@ -1,19 +1,38 @@
 {
 	"name": "jsx-jockey",
 	"displayName": "JSX Jockey",
-	"description": "",
+	"description": "Speeds up your React development by letting you add and remove matching JSX tags in a single operation.",
 	"version": "1.1.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/elramus/jsx-jockey.git"
 	},
+	"author": {
+		"name": "Luke Ramus",
+		"url": "https://lukeramus.com"
+	},
+	"homepage": "https://github.com/elramus/jsx-jockey",
+	"icon": "src/images/icon-256.png",
+	"galleryBanner": {
+		"color": "#2FA5A5",
+		"theme": "light"
+	},
 	"publisher": "lukeramus",
 	"engines": {
 		"vscode": "^1.89.0"
 	},
+	"keywords": [
+		"React",
+		"JSX",
+		"Refactor",
+		"JavaScript",
+		"TypeScript"
+	],
 	"categories": [
+		"Programming Languages",
 		"Other"
 	],
+	"pricing": "Free",
 	"activationEvents": [],
 	"main": "./dist/extension.js",
 	"contributes": {
