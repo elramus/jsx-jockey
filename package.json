@@ -2,7 +2,7 @@
 	"name": "jsx-jockey",
 	"displayName": "JSX Jockey",
 	"description": "Refactor your JSX faster by adding and removing matching JSX tags together.",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/elramus/jsx-jockey.git"
