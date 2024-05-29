@@ -1,7 +1,7 @@
 {
 	"name": "jsx-jockey",
 	"displayName": "JSX Jockey",
-	"description": "Speeds up your React development by letting you add and remove matching JSX tags in a single operation.",
+	"description": "Refactor your JSX faster by adding and removing matching JSX tags together.",
 	"version": "1.2.0",
 	"repository": {
 		"type": "git",
