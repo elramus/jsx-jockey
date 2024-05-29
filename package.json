@@ -12,7 +12,7 @@
 		"url": "https://lukeramus.com"
 	},
 	"homepage": "https://github.com/elramus/jsx-jockey",
-	"icon": "src/images/icon-256.png",
+	"icon": "icon-256.png",
 	"galleryBanner": {
 		"color": "#2FA5A5",
 		"theme": "light"
